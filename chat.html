@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root{
+    --color-primary1: #ff7979;
+    --color-primary2: #fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary1); 
+    border-radius: 0.3rem;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff; 
+}
+
+html a{ 
+    text-decoration: none;
+}
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-primary1);
+}
+
+#title{
+    text-align: center;
+    
+    font-family: 'Lobster', cursive;
+    color: #fff;
+    font-size: 5rem;
+    padding: 1rem 0;
+}
+#title::selection{
+    background: var(--color-primary2);
+    color: var(--color-primary1);
+}
+        .container{
+            position: relative;
+            width: 40rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .chat-area{
+            background: var(--color-primary2);
+            box-shadow: 0 0.5rem 4.5rem rgba(0, 0, 0, 0.3);
+            border-radius: 1em;
+        }
+        .chat-area img{
+            border-radius: 50%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .chat-area header{
+            padding: 1.8rem 3rem;
+            display: flex;
+            align-items: center;
+            color: var(--color-primary2);
+            background: var(--color-primary1);
+        }
+        .chat-area header img{
+            width: 4.5rem;
+            height: 4.5rem;
+            margin: 0 1.5rem;
+        }
+        .chat-area .back-icon{
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-primary2);
+        }
+        .chat-area header span{
+            font-size: 1.7rem;
+            font-weight: 550;
+        }
+
+
+        .chat-box{
+            background: #f7f7f7;
+            height: 36rem;
+            padding: 1rem 3rem 2rem 3rem;
+            overflow-y: auto;
+        }
+        .chat-box::-webkit-scrollbar{
+            display: none;
+        }
+        .chat-box p{
+            word-wrap: break-word;
+            padding: 0.8rem 1.6rem;
+            box-shadow: 0 0 3.2rem rgb(0 0 0 / 8%),
+                        0 1.6rem 1.6rem -1.6rem rgb(0 0 0 / 10%);
+        }
+        .chat-box .outgoing{
+            display: flex;
+        }
+        .outgoing .details{
+            margin-left: auto;
+            max-width: calc(100% - 13rem);
+        }
+        .outgoing .details p{
+            background: var(--color-primary1);
+            color: var(--color-primary2);
+            border-radius: 1.2rem 1.2rem 0 1.2rem;
+        }
+
+
+        .chat-box .incoming{
+            display: flex;
+            align-items: flex-end;
+        }
+        .chat-box .incoming img{
+            height: 3.5rem;
+            width: 3.5rem;
+        }
+        .incoming .details{
+            margin-left: 1rem;
+            margin-right: auto;
+            max-width: calc(100% - 13rem);
+        }
+        .incoming .details p{
+            background: var(--color-primary2);
+            color: var(--color-primary1);
+            border-radius: 1.2rem 1.2rem 1.2rem 0;
+        }
+        .chat-box .chat{
+            margin: 1.5rem 0;
+            font-size: 1.4rem;
+        }
+
+
+        .chat-area .typing-area{
+            padding: 1.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chat-area .typing-area input{
+            height: 4.5rem;
+            width: calc(100% - 5.8rem);
+            font-size: 1.7rem;
+            border: 0.1rem solid  rgba(255, 121, 121, 0.5);
+            outline: none;
+            border-radius: 0.2em;
+            padding: 0 1.3rem;
+            color: var(--color-primary1);
+        }
+        .chat-area .typing-area input::placeholder{
+            color: var(--color-primary1);
+        }
+        .typing-area button{
+            font-size: 1.9rem;
+            width: 5.5rem;
+            border: none;
+            outline: none;
+            border-radius:0 0.5rem 0.5rem 0 ;
+            color: var(--color-primary2);
+            background: var(--color-primary1);
+            cursor: pointer;
+        }
+
+  .chat-area header .details{
+            max-width: 40rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        @media screen and (max-width: 600px){
+            .container{
+                background: #fff;
+                position: absolute;
+                width: 100%;
+                top: 0;
+                transition: 0.5s;
+            }
+            .chat-area{
+                border-radius: 0;
+            }
+            .chat-box{
+                height: calc(100vh - 16.2rem);
+            }
+            ::-webkit-scrollbar{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 400px){
+            .outgoing .details{
+                margin-left: auto;
+                max-width: calc(100% - 7rem);
+            }
+            .incoming .details{
+                margin-left: 1rem;
+                margin-right: auto;
+                max-width: calc(100% - 7rem);
+            }
+        }
+        @media screen and (max-width: 300px){
+            .outgoing .details{
+                margin-left: auto;
+                max-width: calc(100% - 5rem);
+            }
+            .incoming .details{
+                margin-left: 1rem;
+                margin-right: auto;
+                max-width: calc(100% - 5rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h3 id="title">Welcome to Chat App</h3>
+    <div class="container">
+        <section class="chat-area">
+            <header>
+                <a href="#" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+                <img src="./img/avatar.jpg" alt="" class="avatar">
+                <div class="details">
+                    <span>Coding NapelCoding Napel adasas adasda asda  adada</span>
+                    <p>Active now</p>
+                </div>
+            </header>
+            <div class="chat-box">
+                <div class="chat outgoing">
+                    <div class="details">
+                        <p>ddddddddddddddddddddddddasdasasdasdaddddddddddddddddddddelit</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+                <div class="chat incoming">
+                    <img src="./img/avatar.jpg" alt="">
+                    <div class="details">
+                        <p>Đang làm gì vậy bạn ơi Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    </div>
+                </div>
+            </div> <!-- end chat-box -->
+            <form action="" class="typing-area">
+                <input type="text" placeholder="Type a message here...">
+                <button><i class="fab fa-telegram-plane"></i></button>
+            </form>
+        </section>
+    </div>
+</div>
+</body>
+    <script>
+        $(document).ready(function(){
+            
+        })
+    </script>
+</html>

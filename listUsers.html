@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root{
+    --color-primary1: #ff7979;
+    --color-primary2: #fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary1); 
+    border-radius: 0.3rem;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff; 
+}
+
+html a{ 
+    text-decoration: none;
+}
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-primary1);
+}
+
+#title{
+    text-align: center;
+    
+    font-family: 'Lobster', cursive;
+    color: #fff;
+    font-size: 5rem;
+    padding: 1rem 0;
+}
+#title::selection{
+    background: var(--color-primary2);
+    color: var(--color-primary1);
+}
+               .container{
+            position: relative;
+            width: 40rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .users img{
+            object-fit: cover;
+            border-radius: 50%;
+        } 
+        .users{
+            background: var(--color-primary2);
+            box-shadow: 0 0.5rem 4.5rem rgba(0, 0, 0, 0.3);
+            border-radius: 1em;
+            padding: 2.5rem 3rem;
+        }
+        .users header, .users-list a{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 0.1rem solid rgba(255, 121, 121, 0.5);
+        }
+        .users .content .avatar{
+            width: 5rem;
+            height: 5rem;
+        }
+        .users .content{
+            display: flex;
+            align-items: center;
+        }
+        .users .content .details{
+            margin-left: 1.5rem;
+            white-space: nowrap;
+            max-width:20rem;
+        }
+        .users .details span{
+            font-size: 1.8rem;
+            font-weight: 550;
+            color: var(--color-primary1);
+        }
+        .users .details p, header .details p{
+            font-size: 1.2rem;
+            color: #ff7979;
+            margin-top: 0.2rem;
+        }
+        .users header .logout{
+            font-size: 1.7rem;
+            color: var(--color-primary2);
+            padding: 0.35em 0.75em;
+            border-radius: 0.3em;
+            background: var(--color-primary1);
+        }
+
+
+        .users .search{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        .users .search input{
+            position: absolute;
+            height: 4.2rem;
+            padding: 0 1.3rem;
+            width: calc(100% - 5rem);
+
+            font-size: 1.6rem;
+            color: var(--color-primary1);
+            
+            border: 0.15rem solid #f5bbbb;
+            border-radius: 0.5rem 0 0 0.5rem;
+            outline: none;
+        }
+        .users .search input::placeholder{
+            color: var(--color-primary1);
+        }
+        .users .search button{
+            width: 4.7rem;
+            height: 4.2rem;
+
+            font-size: 1.7rem;
+            color: var(--color-primary2);
+            
+            background: var(--color-primary1);
+            outline: none;
+            border: none;
+            border-radius: 0 0.5rem 0.5rem 0;
+            cursor: pointer;
+        }
+
+
+        .users-list{
+            max-height: 32rem;
+            overflow-y: auto;
+        }
+        .users-list::-webkit-scrollbar{
+            display: none;
+        }
+        .users-list .content .avatar{
+            width: 4rem;
+            height: 4rem;
+        }
+        .users-list .status-dot{
+            margin-right: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--color-primary1)
+        }
+        .users-list .status-dot.offline{
+            color: #ccc;
+        }
+        .users-list a{
+            margin-bottom: 1.5rem;
+            border-bottom: 0.1rem solid rgba(255, 121, 121, 0.2);
+        }
+        .users-list a:last-child{
+            border: none;
+            margin-bottom: 0;
+        }
+        .users-list .content p{
+            color: rgba(255, 121, 121, 0.7);
+        }
+
+
+
+
+        .users-list .details p, .users-list .details span{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+        header .content .details{
+            width: 15rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+ 
+
+
+        @media screen and (max-width: 600px){
+            .container{
+                width: 100% ;
+                position: absolute;
+                top: 0%;
+                transition: 0.5s;
+                background: #fff;
+                min-width: 23rem;
+            }
+            .users{
+                border-radius: 0;
+            }
+            .users-list{
+                max-height: calc(100vh - 20.3rem);
+                height: 100vh;
+            }
+            ::-webkit-scrollbar{
+                display: none;
+            }
+            .users .content .details{
+                max-width:30rem;
+            }
+            header .content .details{
+                width: 20rem;
+            }
+        }
+        @media screen and (max-width: 450px){
+            .users .content .details{
+                max-width:20rem;
+            }
+            header .content .details{
+                width: 10rem;
+            }
+        }
+        @media screen and (max-width: 350px){
+            .users .content .details{
+                max-width:10rem;
+            }
+        }
+        @media screen and (max-width: 280px){
+            header .details p{
+                display: none;
+            }
+            header .content .details{
+                width: 5rem;
+            }
+        }
+        @media screen and (max-width: 250px){
+            .users .details p{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h3 id="title">Welcome to Chat App</h3>
+    <div class="container">
+        <section class="users">
+            <header>
+                <div class="content">
+                    <img src="/img/avatar.jpg" alt="" class="avatar">
+                    <div class="details">
+                        <span>Lê Tuấn Anasdadadadh</span>
+                        <p>Active now</p>
+                    </div>
+                </div>
+                <a href="./chat.html" class="logout">Logout</a>
+            </header>
+            <div class="search">
+                <!-- <span>Select an user to start chat</span> -->
+                <span class="Dùng để đẩy button ra sát phải do spacebetween"></span>
+                <input type="text" placeholder="Enter name to search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="users-list">
+                <a href="#">
+                    <div class="content">
+                        <img src="./img/avatar.jpg" alt="" class="avatar">
+                        <div class="details">
+                            <span>Lê Tuấn Anhasdasdadsadadassad1</span>
+                            <p>This is test measdasd adasd adad asdasdssage</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="./img/avatar.jpg" alt="" class="avatar">
+                        <div class="details">
+                            <span>Lê Tuấn Anh2</span>
+                            <p>This is test m asdessage</p>
+                        </div>
+                    </div>
+                    <div class="status-dot offline"><i class="fas fa-circle"></i></div>
+                </a>
+            </div>
+        </section>
+    </div>
+    </div>
+</body>
+    <script>
+        $(document).ready(function(){
+            console.log('This is page users');
+        })
+    </script>
+</html>
